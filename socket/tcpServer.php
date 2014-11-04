@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set('Asia/shanghai');
 $socket = stream_socket_server("tcp://0.0.0.0:1234", $errno, $errstr);
 if (!$socket) {
     echo "$errstr ($errno)<br />\n";

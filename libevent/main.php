@@ -1,4 +1,11 @@
 <?php
+/**
+ * callback
+ *
+ * @param resource $fd     自动传递的参数，文件句柄
+ * @param int $events 自动传递的参数，event类型？
+ * @param array    $arg    手动传递的参数
+ */
 function print_line($fd, $events, $arg) {
     static $max_requests = 0;
     $max_requests++;
@@ -20,8 +27,8 @@ $event = event_new();
 printf("please input a world:\n");
 $fd = STDIN; // read from terminal
 
-// set event flags
-event_set($event, $fd, EV_READ | EV_PERSIST, "print_line", array($event, $base));
+// set event flags, EV_PERSIST是否持久
+event_set($event, $fd, EV_READ | EV_PERSIST , "print_line", array($event, $base));
 // set event base
 event_base_set($event, $base);
 

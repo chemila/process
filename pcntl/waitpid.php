@@ -24,6 +24,9 @@ for ($i = 0; $i < 10; $i++) {
 
 while (count($childs) > 0) {
     foreach ($childs as $key => $pid) {
+        // returns the process ID of the child which exited,
+        // -1 on error or
+        // zero if WNOHANG was used and no child was available
         $res = pcntl_waitpid($pid, $status, WNOHANG);
 
         // If the process has already exited
