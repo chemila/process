@@ -4,7 +4,8 @@ if (!$fp) {
     echo "$errstr ($errno)<br />\n";
 }
 else {
-    fwrite($fp, "test");
+//    fwrite($fp, "test");
+    stream_socket_sendto($fp, 'test');
     while (!feof($fp)) {
         echo fgets($fp, 1024);
     }

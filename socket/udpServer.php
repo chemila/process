@@ -10,5 +10,5 @@ while(1) {
     if ($address) {
         stream_socket_sendto($socket, 'got it at'.time(), 0, $address);
     }
-    sleep(2);
+    sleep(1);
 }

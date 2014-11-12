@@ -5,9 +5,15 @@ if (!$socket) {
 }
 else {
     while ($conn = stream_socket_accept($socket)) { // UDP不需要connection过程
-        printf("read:%s\n", fread($conn, 1024));
-        fwrite($conn, 'The local time is ' . date('n/j/Y g:i a') . "\n");
-        fclose($conn);
+//        printf("read:%s\n", fread($conn, 1024));
+//        fwrite($conn, 'The local time is ' . date('n/j/Y g:i a') . "\n");
+        $address = null;
+        $buff = stream_socket_recvfrom($conn, 1024, null, $address);
+        if (!$buff) continue;
+        printf("read from buff: %s\n", $buff);
+//        stream_socket_sendto($conn, 'i got it', null, $address);
+        fwrite($conn, 'i got it');
+//        fclose($conn);
     }
     fclose($socket);
 }
